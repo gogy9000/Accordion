@@ -16,12 +16,7 @@ export const AccordionBody = (props: any) => {
                                   sum={props.sum}
             /></div>)
         }
-        // for (let j = 0; j < props.valBold; j++) {
-        //     arr.push(<div><Rating selec={props.selec}
-        //                           val={props.val}
-        //                           valBold={props.valBold}
-        //     /></div>)
-        // }
+
     }
     return <div>{arr}</div>
 
