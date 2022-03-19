@@ -1,8 +1,15 @@
 import React from 'react';
 import './App.css';
 import {Menu} from "./Menu";
+import {Statetype} from "./index";
 
-function App(props:any) {
+
+type AppPropsType={
+    state: Statetype
+    onSwitch:()=>void
+    onElement:()=>void
+}
+function App(props:AppPropsType) {
 
     return (
         <div className="App">

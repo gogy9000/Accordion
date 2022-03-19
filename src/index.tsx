@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 
 
+export type arrMenuType={
+    id:number
+    element:string
+}
+
+
+
 let store = {
     _rerender() {
         alert('какая то дичь в сторе!')
@@ -20,32 +27,49 @@ let store = {
             {id: 2, element: 'elem2'},
             {id: 3, element: 'elem3'},
             {id: 4, element: 'user'},
-        ],
+        ] as Array<arrMenuType>,
         onOff: true,
-        onElem:true,
+        onElem: true,
     },
+
     onSwitch() {
-        this.getState().onOff?this.getState().onOff = false:this.getState().onOff = true
+        this.getState().onOff ? this.getState().onOff = false : this.getState().onOff = true
         rerender(store)
     },
     onElement() {
-        this.getState().onElem?this.getState().onElem = false:this.getState().onElem = true
+        this.getState().onElem ? this.getState().onElem = false : this.getState().onElem = true
         console.log(this.getState().onElem)
         rerender(store)
     }
+}
+export type Statetype=typeof store._state
+type storeType={
+    getState: () =>  void
+    onSwitch: () => void
+    onElement: () => void
+    _state: Statetype
+
+
+
 }
 
 
 
 
-export const rerender = (store: any) => {
+
+
+
+export const rerender = (store: storeType) => {
+
 
     ReactDOM.render(
-        <App state={store.getState()}
+        // @ts-ignore
+        <App state={store._state}
              onSwitch={store.onSwitch.bind(store)}
              onElement={store.onElement.bind(store)}/>,
         document.getElementById('root')
     );
 }
+
 rerender(store)
 store._subscribe(rerender)

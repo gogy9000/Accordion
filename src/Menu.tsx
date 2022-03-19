@@ -1,7 +1,14 @@
 import React from "react";
 import {Button} from "antd";
+import {Statetype} from "./index";
 
-export const Menu = (props: any) => {
+type MenuPropsType={
+    state:Statetype
+    onSwitch:()=>void
+    onElement:()=>void
+}
+
+export const Menu = (props: MenuPropsType) => {
     return (
         <div>
             <Accordion state={props.state} onSwitch={props.onSwitch} onElement={props.onElement}/>
