@@ -1,24 +1,27 @@
-import {Star} from "./Star/Star";
 import React from "react";
+// @ts-ignore
+import s from './Rating.module.css'
+import {MapRating} from "./MapRating";
 
-export const Rating = (props:any) => {
-    console.log('Rating render')
-    if(props.val===undefined){
-        return <Star />
-    }else {
-        const arr=[]
-        for(let i=0; i<props.sum-props.valBold;i++ ){
-
-            arr.push(<Star  selec={props.selec} />)
-
-        }
-        for(let j=0; j<props.sum-props.val;j++ ){
-            arr.push(<Star   />)
-
-
-        }
-
-        return <div>{arr}</div>
-    }
+type RatingPropsType = {
+    rating: number
 
 }
+
+export const Rating: React.FC<RatingPropsType> = ({rating}) => {
+
+    let arr = [] as Array<number>
+
+    for (let i = 0; i < rating; i++) {
+        arr = [...arr, i]
+    }
+
+    const starMap = arr.map((el, index) => <MapRating key={index+Math.random()}/>)
+
+    return (
+        <div>
+            {starMap}
+        </div>
+    )
+}
+
