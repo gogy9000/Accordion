@@ -13,7 +13,9 @@ function App(props:AppPropsType) {
 
     return (
         <div className="App">
-            <Menu state={props.state} onSwitch={props.onSwitch} onElement={props.onElement}/>
+            <Menu state={props.state}
+                  onSwitch={props.onSwitch}
+                  onElement={props.onElement}/>
         </div>
     );
 }
