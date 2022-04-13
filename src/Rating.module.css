@@ -1,7 +1,8 @@
-.red{
-    color: #050505;
-}
-.blue{
+
+.MouseEnter{
     color: #ff0000;
     font-weight: bolder;
+}
+.MouseLeave{
+    color: #050505;
 }
