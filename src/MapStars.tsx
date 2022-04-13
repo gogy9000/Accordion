@@ -7,11 +7,13 @@ import s from "./Rating.module.css";
 type MapRatingType = {
     index: number
     rating: number
+    iconValue:string
     onClickRatingHandlerUpdate: (index: number) => void
 }
 
 
-export const MapRating: React.FC<MapRatingType> = ({index, rating, onClickRatingHandlerUpdate}) => {
+export const MapStars: React.FC<MapRatingType> = ({index, rating,
+                                                      iconValue, onClickRatingHandlerUpdate}) => {
 
     let [onMouseBlink, useColorOnMouse] = useState(false)
     //хук состоянием от которого отталкиваются стили
@@ -34,7 +36,7 @@ export const MapRating: React.FC<MapRatingType> = ({index, rating, onClickRating
                    onMouseEnter={useOnMouseEnterHandler}
                    onMouseLeave={useOnMouseLeaveHandler}
                    className={onMouseBlink ? s.MouseEnter : s.MouseLeave}
-             >{index < rating ? <b>{' '+'star'+" "}</b> : <>{' '+'star'+" "}</>}
+             >{index < rating ? <b>{iconValue}{' '}</b> : <>{iconValue}{' '}</>}
                  {/*здесь во время мапа сравниватся текущий индекс элемента и значение рейтинга*/}
                  {/*если значение рейтинга выше чем текущий индекс то звезда рендерится жирным шрифтом*/}
                  {/*если нет, то нежирным, все изи*/}
