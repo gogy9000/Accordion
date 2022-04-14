@@ -8,17 +8,19 @@ import {ButtonUpAndDown} from "./ButtonUpAndDown";
 type RatingPropsType = {
     starValue: number
     rating: number
-    iconValue:string
-    onClickRatingHandlerUpdate: (index:number) => void
+    iconValue: string
+    onClickRatingHandlerUpdate: (index: number) => void
     useOnClickStarValueHandlerUp: () => void
     useOnClickStarValueHandlerDown: () => void
+    callBack: () => void
+
 }
 
 export const Rating: React.FC<RatingPropsType> = (
     {
-        starValue, rating,  onClickRatingHandlerUpdate,
+        starValue, rating, onClickRatingHandlerUpdate,
         useOnClickStarValueHandlerUp, useOnClickStarValueHandlerDown,
-        iconValue
+        iconValue, ...props
     }
 ) => {
 
@@ -29,10 +31,12 @@ export const Rating: React.FC<RatingPropsType> = (
     //эта штука создает массив с длинной равной starValue по которому мапится MapStars
 
     const mapStars = arr.map((el, index) => <MapStars key={v1()}
-                                                     onClickRatingHandlerUpdate={onClickRatingHandlerUpdate}
-                                                     index={index}
-                                                     rating={rating}
-                                                      iconValue={iconValue}/>)
+                                                      onClickRatingHandlerUpdate={onClickRatingHandlerUpdate}
+                                                      index={index}
+                                                      rating={rating}
+                                                      iconValue={iconValue}
+                                                      callBack={props.callBack}
+                                                      starValue={starValue}/>)
     //вот здесь мапится MapStars
 
     return (

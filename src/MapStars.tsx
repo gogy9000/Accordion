@@ -9,11 +9,13 @@ type MapRatingType = {
     rating: number
     iconValue:string
     onClickRatingHandlerUpdate: (index: number) => void
+    callBack:()=>void
+    starValue:number
 }
 
 
 export const MapStars: React.FC<MapRatingType> = ({index, rating,
-                                                      iconValue, onClickRatingHandlerUpdate}) => {
+                                                      iconValue, onClickRatingHandlerUpdate,...props}) => {
 
     let [onMouseBlink, useColorOnMouse] = useState(false)
     //хук состоянием от которого отталкиваются стили
@@ -24,7 +26,8 @@ export const MapStars: React.FC<MapRatingType> = ({index, rating,
     // Потому что так не лагает если очень шустро ерзать по ним мышкой
 
     const onClickHandler = () => {
-        onClickRatingHandlerUpdate(index)
+        onClickRatingHandlerUpdate(index+1)
+        if(rating+1===props.starValue){props.callBack()}
     }
     //это колбэк который вызывает колбек при нажатии нажатии на звезду
     // и отдает ей текущий индекс в качестве аргумента, а он там где то наверху присваивается

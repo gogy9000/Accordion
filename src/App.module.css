@@ -4,3 +4,12 @@
 .blue{
     color: aqua;
 }
+.App{
+    text-align: center;
+}
+.CheckTasks{
+    color: red;
+}
+.UnCheckTask{
+    color: #050505;
+}
