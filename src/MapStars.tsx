@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // @ts-ignore
 import s from "./Rating.module.css";
 
@@ -39,7 +39,7 @@ export const MapStars: React.FC<MapRatingType> = ({index, rating,
                    onMouseEnter={useOnMouseEnterHandler}
                    onMouseLeave={useOnMouseLeaveHandler}
                    className={onMouseBlink ? s.MouseEnter : s.MouseLeave}
-             >{index < rating ? <b>{iconValue}{' '}</b> : <>{iconValue}{' '}</>}
+             >{index < rating ? <b><ArrowForwardIcon fontSize="large"/>{' '}</b> : <><ArrowForwardIcon  />{' '}</>}
                  {/*здесь во время мапа сравниватся текущий индекс элемента и значение рейтинга*/}
                  {/*если значение рейтинга выше чем текущий индекс то звезда рендерится жирным шрифтом*/}
                  {/*если нет, то нежирным, все изи*/}

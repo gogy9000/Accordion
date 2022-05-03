@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {v1} from "uuid";
 import RatingWrapper from "./RatingWrapper";
-import {TaskType} from "./App";
 // @ts-ignore
 import s from './App.module.css'
+import {Button, Checkbox} from "@mui/material";
+import {Favorite, FavoriteBorder} from "@mui/icons-material";
+import {TaskType} from "./ToDoBlock";
 
 
 type AccordionPropsType = {
@@ -22,7 +23,8 @@ export const Accordion: React.FC<AccordionPropsType> = ({accordionElement, ...pr
             return (
                 <div key={task.id}>
                     <span className={task.checked ? s.CheckTasks : s.UnCheckTask}>{task.taskName}</span>
-                    <input onClick={onCheckHandler} type={"checkbox"} checked={task.checked}/>
+                    <Checkbox  icon={<FavoriteBorder />} checkedIcon={<Favorite />} defaultChecked color="secondary" />
+                    {/*<input onClick={onCheckHandler} type={"checkbox"} checked={task.checked}/>*/}
                     {/*<div>success</div>*/}
                     <div><RatingWrapper callBackCompleted={()=>alert('completed')} iconValue={'0'}/></div>
 
@@ -34,7 +36,8 @@ export const Accordion: React.FC<AccordionPropsType> = ({accordionElement, ...pr
     return (
         <div>
             <div>Tasks</div>
-            <button onClick={onClickHandler}>menu</button>
+            <Button onClick={onClickHandler} variant="contained">Text</Button>
+            {/*<button onClick={onClickHandler}>menu</button>*/}
             {collapsed && <div>{tasksMap}</div>}
         </div>)
 

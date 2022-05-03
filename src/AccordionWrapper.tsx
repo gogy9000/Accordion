@@ -1,6 +1,6 @@
 import {Accordion} from "./Accordion";
 import React from "react";
-import {TaskType} from "./App";
+import {TaskType} from "./ToDoBlock";
 
 
 type AccordionWrapperTaskType={
