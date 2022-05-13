@@ -1,0 +1,10 @@
+.select{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 2px 10px 2px 10px;
+}
+.onMouseItem{
+    background-color: #cbc9c9;
+
+}
