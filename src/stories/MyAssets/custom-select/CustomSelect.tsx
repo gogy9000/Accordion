@@ -35,7 +35,7 @@ export const CustomSelect: React.FC<CustomSelect> = ({label, value,selectItemCal
     return (
         <Typography>
 
-            <Grid container direction={'column'} justifyContent={'center'} alignItems={'center'} spacing={0}>
+            <Grid container direction={'column'} justifyContent={'center'} alignItems={'center'} spacing={1}>
 
                     <Grid onClick={onclickSelect} item className={customSelect.select}>{activeItem}</Grid>
 
