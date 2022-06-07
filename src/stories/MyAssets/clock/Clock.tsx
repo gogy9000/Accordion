@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Grid, Tooltip, Typography} from "@mui/material";
+import {AnalogClock} from "./AnalogClock";
+import Button from "@mui/material/Button";
 
 type ClockContainerPropsType = {
     ClockLabel: string
@@ -11,6 +13,7 @@ export const ClockContainer: React.FC<ClockContainerPropsType> = (props) => {
     const initDate = () => new Date()
 
     const [date, setDate] = useState<Date>(initDate)
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -25,11 +28,10 @@ export const ClockContainer: React.FC<ClockContainerPropsType> = (props) => {
 type ClockPropsType = {
     label: string
     date: Date
-
     width?: number
 }
 export const Clock: React.FC<ClockPropsType> = ({label, date, width}) => {
-
+    const [analogMode, setAnalogMode] = useState(false)
     const getTime = () => {
         const minutes = date.getMinutes()
         const seconds = date.getSeconds()
@@ -38,25 +40,34 @@ export const Clock: React.FC<ClockPropsType> = ({label, date, width}) => {
     }
 
     return (
+        <>{
+            !analogMode
+                ?
+                <Typography component={'div'}>
+                    <Tooltip title={date.toLocaleDateString()}
+                             enterDelay={300} leaveDelay={500}>
 
-        <Typography component={'div'}>
-            <Tooltip title={date.toLocaleDateString()}
-                     enterDelay={300} leaveDelay={500}>
+                        <Grid container
+                              direction={'column'}
+                              justifyContent={'center'}
+                              alignItems={'center'}
+                              bgcolor={'darkgray'}
+                              borderRadius={3}
+                              width={width ? width : 100}>
 
-                <Grid container
-                      direction={'column'}
-                      justifyContent={'center'}
-                      alignItems={'center'}
-                      bgcolor={'darkgray'}
-                      borderRadius={3}
-                      width={width ? width : 100}>
+                            <Grid>{label}</Grid>
 
-                    <Grid>{label}</Grid>
-
-                    <Grid>{getTime()}</Grid>
-                </Grid>
-            </Tooltip>
-        </Typography>
-
+                            <Grid>{getTime()}</Grid>
+                        </Grid>
+                    </Tooltip>
+                    <Button onClick={()=>{setAnalogMode(true)}}>click me</Button>
+                </Typography>
+                :
+                <>
+                    <AnalogClock/>
+                    <Button onClick={()=>{setAnalogMode(false)}}>click me</Button>
+                </>
+        }</>
     )
 }
+
